@@ -3,73 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard RT 03 RW 13 Desa Cemani</title>
+    <title>Dashboard RT 03 RW 13 Cemani</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <header class="header">
         <div class="container">
-            <h1>Dashboard RT 03 RW 13</h1>
-            <nav>
-                <ul>
-                    <li><a href="#beranda">Beranda</a></li>
-                    <li><a href="#informasi">Informasi RT</a></li>
-                    <li><a href="#agenda">Agenda</a></li>
-                    <li><a href="#keuangan">Laporan Keuangan</a></li>
-                    <li><a href="#kontak">Kontak Penting</a></li>
-                </ul>
+            <h1 class="header-title">RT 03 RW 13 Desa Cemani</h1>
+            <nav class="nav">
+                <a href="#beranda" class="nav-item">Beranda</a>
+                <a href="#informasi" class="nav-item">Informasi</a>
+                <a href="#agenda" class="nav-item">Agenda</a>
+                <a href="#keuangan" class="nav-item">Keuangan</a>
+                <a href="#kontak" class="nav-item">Kontak</a>
             </nav>
         </div>
     </header>
 
     <main class="main">
-        <section id="beranda" class="section">
-            <h2>Selamat Datang</h2>
-            <p>Informasi dan kegiatan terbaru untuk warga RT 03 RW 13.</p>
+        <section id="beranda" class="section hero">
+            <div class="container">
+                <h2>Selamat Datang Warga!</h2>
+                <p>Dashboard informasi dan kegiatan untuk seluruh warga RT 03 RW 13 Desa Cemani.</p>
+            </div>
         </section>
 
         <section id="informasi" class="section">
-            <h2>Informasi RT</h2>
-            <div class="card">
-                <h3>Struktur Pengurus</h3>
-                <p>Ketua RT: [Nama]</p>
-                <p>Sekretaris: [Nama]</p>
-            </div>
-            <div class="card">
-                <h3>Galeri Foto</h3>
-                <p>Dokumentasi kegiatan warga.</p>
+            <div class="container">
+                <h2><i class="fas fa-info-circle"></i> Informasi RT</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Struktur Pengurus</h3>
+                        <p><strong>Ketua RT:</strong> [Nama Ketua]</p>
+                        <p><strong>Sekretaris:</strong> [Nama Sekretaris]</p>
+                        <p><strong>Bendahara:</strong> [Nama Bendahara]</p>
+                    </div>
+                    <div class="card">
+                        <h3>Peraturan</h3>
+                        <p>Tertibkan lingkungan dan jaga kebersihan. Siskamling rutin setiap malam.</p>
+                    </div>
                 </div>
+            </div>
         </section>
 
         <section id="agenda" class="section">
-            <h2>Agenda Kegiatan</h2>
-            <ul>
-                <li><strong>20 Agustus 2025:</strong> Rapat Bulanan</li>
-                <li><strong>25 Agustus 2025:</strong> Kerja Bakti</li>
-            </ul>
+            <div class="container">
+                <h2><i class="fas fa-calendar-alt"></i> Agenda Kegiatan</h2>
+                <ul class="agenda-list">
+                    <li><strong>20 Agustus 2025:</strong> Rapat Bulanan Warga</li>
+                    <li><strong>25 Agustus 2025:</strong> Kerja Bakti Massal</li>
+                    <li><strong>10 September 2025:</strong> Posyandu Balita</li>
+                </ul>
+            </div>
         </section>
 
         <section id="keuangan" class="section">
-            <h2>Laporan Keuangan</h2>
-            <div class="card">
-                <h3>Kas Bulanan</h3>
-                <p>Pemasukan: Rp. [Jumlah]</p>
-                <p>Pengeluaran: Rp. [Jumlah]</p>
+            <div class="container">
+                <h2><i class="fas fa-chart-line"></i> Laporan Keuangan</h2>
+                <div class="card">
+                    <h3>Kas Bulan Ini</h3>
+                    <p><strong>Pemasukan:</strong> Rp. 1.500.000</p>
+                    <p><strong>Pengeluaran:</strong> Rp. 500.000</p>
+                    <p><strong>Saldo Akhir:</strong> Rp. 1.000.000</p>
+                </div>
             </div>
-            </section>
+        </section>
 
         <section id="kontak" class="section">
-            <h2>Kontak Penting</h2>
-            <ul>
-                <li><strong>Ketua RT:</strong> 0812-xxxx-xxxx</li>
-                <li><strong>Polisi:</strong> 110</li>
-            </ul>
+            <div class="container">
+                <h2><i class="fas fa-phone-alt"></i> Kontak Penting</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <h3>Pengurus</h3>
+                        <p><strong>Ketua RT:</strong> 0812-xxxx-xxxx</p>
+                        <p><strong>Sekretaris:</strong> 0813-xxxx-xxxx</p>
+                    </div>
+                    <div class="card">
+                        <h3>Darurat</h3>
+                        <p><strong>Polisi:</strong> 110</p>
+                        <p><strong>Puskesmas:</strong> [Nomor Puskesmas]</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 RT 03 RW 13 Desa Cemani</p>
+        <div class="container">
+            <p>&copy; 2025 RT 03 RW 13 Desa Cemani. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>
