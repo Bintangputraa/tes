@@ -368,6 +368,11 @@ body {
     .sidebar-overlay {
         display: none !important;
     }
+    
+    /* Reset sidebar state on desktop */
+    .sidebar.active {
+        left: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -463,15 +468,28 @@ body {
 
     .nav-menu {
         display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
+        position: relative;
+        top: 0;
+        left: 0;
         background: white;
         flex-direction: column;
-        width: 200px;
+        width: 100%;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         border-radius: 5px;
         padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .main {
+        transition: margin-top 0.3s ease;
+    }
+
+    .main.shifted {
+        margin-top: 200px;
     }
 
     .nav-item {

@@ -159,9 +159,17 @@
     <script>
         const navToggle = document.getElementById("navToggle");
         const navMenu = document.getElementById("navMenu");
+        const main = document.querySelector(".main");
 
         navToggle.addEventListener("click", () => {
             navMenu.classList.toggle("show");
+            if (navMenu.classList.contains("show")) {
+                // Calculate the height of the dropdown menu
+                const navHeight = navMenu.offsetHeight;
+                main.style.marginTop = navHeight + "px";
+            } else {
+                main.style.marginTop = "0";
+            }
         });
 
         // Carousel auto-slide functionality
