@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karang Taruna ERTEGA - Desa Cemani</title>
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.4.1/dist/css/coreui.min.css" rel="stylesheet"
+        integrity="sha384-NlsxdkweGA8nr9s0TVc3Qu2zqhWMNsHrvzMpAjVR0yDqXgC2z+RWYoeCNG2uO2MC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Karang Taruna</h3>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#informasi" class="sidebar-item active" data-section="informasi">
+                <i class="fas fa-info-circle"></i> Informasi
+            </a>
+            <a href="#struktur" class="sidebar-item" data-section="struktur">
+                <i class="fas fa-sitemap"></i> Struktur Organisasi
+            </a>
+            <a href="#galeri" class="sidebar-item" data-section="galeri">
+                <i class="fas fa-images"></i> Galeri
+            </a>
+            <a href="#todo" class="sidebar-item" data-section="todo">
+                <i class="fas fa-tasks"></i> To Do List
+            </a>
+            <a href="#kalender" class="sidebar-item" data-section="kalender">
+                <i class="fas fa-calendar-alt"></i> Kalender
+            </a>
+            <a href="#kontak" class="sidebar-item" data-section="kontak">
+                <i class="fas fa-phone-alt"></i> Kontak
+            </a>
+        </nav>
+    </div>
+
+    <!-- Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="content-header">
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="logo-section">
+                <img src="/logo/Logo 2.jpg" alt="Logo Karang Taruna" class="kt-logo">
+                <div>
+                    <h1>Karang Taruna ERTEGA</h1>
+                    <p>Desa Cemani RT 03 RW 13</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-body">
+            <!-- Informasi Section -->
+            <section id="informasi-section" class="content-section active">
+                <h2><i class="fas fa-info-circle"></i> Informasi Karang Taruna ERTEGA</h2>
+                <div class="card">
+                    <h3>Tentang Kami</h3>
+                    <p>Karang Taruna ERTEGA (Energi Rela Terus Bergerak) adalah organisasi kepemudaan di Desa Cemani RT 03 RW 13 yang berkomitmen untuk mengembangkan potensi generasi muda dalam berbagai bidang kegiatan sosial, ekonomi, dan lingkungan.</p>
+                    
+                    <h4>Visi</h4>
+                    <p>Menjadi wadah pemuda yang aktif, kreatif, dan berkontribusi positif untuk kemajuan desa dan masyarakat sekitar.</p>
+                    
+                    <h4>Misi</h4>
+                    <ul>
+                        <li>Mengembangkan potensi dan keterampilan pemuda</li>
+                        <li>Melaksanakan kegiatan sosial dan kemasyarakatan</li>
+                        <li>Mendorong kreativitas dan inovasi pemuda</li>
+                        <li>Membangun jaringan dan kemitraan strategis</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Struktur Organisasi Section -->
+            <section id="struktur-section" class="content-section">
+                <h2><i class="fas fa-sitemap"></i> Struktur Organisasi</h2>
+                <div class="card">
+                    <h3>Pengurus Karang Taruna ERTEGA</h3>
+                    <div class="struktur-grid">
+                        <div class="struktur-item">
+                            <h4>Ketua</h4>
+                            <p>[Nama Ketua]</p>
+                        </div>
+                        <div class="struktur-item">
+                            <h4>Wakil Ketua</h4>
+                            <p>[Nama Wakil Ketua]</p>
+                        </div>
+                        <div class="struktur-item">
+                            <h4>Sekretaris</h4>
+                            <p>[Nama Sekretaris]</p>
+                        </div>
+                        <div class="struktur-item">
+                        <h4>Bendahara</h4>
+                        <p>[Nama Bendahara]</p>
+                    </div>
+                    <div class="struktur-item">
+                        <h4>Koordinator Bidang</h4>
+                        <p>[Nama Koordinator]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeri Section -->
+        <section id="galeri-section" class="content-section">
+            <h2><i class="fas fa-images"></i> Galeri Kegiatan</h2>
+            <div class="galeri-grid">
+                <div class="galeri-item">
+                    <img src="https://via.placeholder.com/300x200/007bff/ffffff?text=Kegiatan+1" alt="Kegiatan 1">
+                    <p>Kerja Bakti Massal</p>
+                </div>
+                <div class="galeri-item">
+                    <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Kegiatan+2" alt="Kegiatan 2">
+                    <p>Pelatihan Keterampilan</p>
+                </div>
+                <div class="galeri-item">
+                    <img src="https://via.placeholder.com/300x200/dc3545/ffffff?text=Kegiatan+3" alt="Kegiatan 3">
+                    <p>Sosialisasi Lingkungan</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- To Do List Section -->
+        <section id="todo-section" class="content-section">
+            <h2><i class="fas fa-tasks"></i> To Do List</h2>
+            <div class="card">
+                <h3>Program Kerja 2025</h3>
+                <ul class="todo-list">
+                    <li>
+                        <input type="checkbox" id="todo1">
+                        <label for="todo1">Pelatihan kewirausahaan untuk pemuda</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="todo2">
+                        <label for="todo2">Program donor darah rutin</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="todo3">
+                        <label for="todo3">Pembangunan taman bacaan</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="todo4">
+                        <label for="todo4">Pelatihan digital marketing</label>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Kalender Section -->
+        <section id="kalender-section" class="content-section">
+            <h2><i class="fas fa-calendar-alt"></i> Kalender Kegiatan</h2>
+            <div class="card">
+                <h3>Jadwal Kegiatan 2025</h3>
+                <div class="kalender-item">
+                    <strong>15 Januari 2025:</strong> Rapat Perencanaan Tahunan
+                </div>
+                <div class="kalender-item">
+                    <strong>20 Februari 2025:</strong> Pelatihan Kewirausahaan
+                </div>
+                <div class="kalender-item">
+                    <strong>10 Maret 2025:</strong> Donor Darah Massal
+                </div>
+                <div class="kalender-item">
+                    <strong>25 April 2025:</strong> Kerja Bakti Lingkungan
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak Section -->
+        <section id="kontak-section" class="content-section">
+            <h2><i class="fas fa-phone-alt"></i> Kontak Karang Taruna</h2>
+            <div class="card">
+                <h3>Hubungi Kami</h3>
+                <div class="kontak-info">
+                    <p><i class="fas fa-user"></i> <strong>Ketua:</strong> [Nama Ketua] - 0812-xxxx-xxxx</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> karangtaruna.ertega@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Alamat:</strong> Desa Cemani RT 03 RW 13</p>
+                    <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> @karangtaruna.ertega</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Sidebar toggle functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        // Toggle sidebar
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Handle sidebar item clicks
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all items
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                // Hide all sections
+                contentSections.forEach(section => section.classList.remove('active'));
+                
+                // Show corresponding section
+                const targetSection = item.getAttribute('data-section');
+                document.getElementById(`${targetSection}-section`).classList.add('active');
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    toggleSidebar();
+                }
+            });
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !sidebarToggleBtn.contains(e.target)) {
+                sidebar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
