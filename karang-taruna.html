@@ -8,9 +8,196 @@
         integrity="sha384-NlsxdkweGA8nr9s0TVc3Qu2zqhWMNsHrvzMpAjVR0yDqXgC2z+RWYoeCNG2uO2MC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --gap: 14px;
+        }
+    
+        * {
+            box-sizing: border-box;
+        }
+    
+    
+    
+        h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    
+        .hint {
+            font-size: 12px;
+            opacity: .75;
+            margin-top: 4px;
+        }
+    
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+    
+        .controls input[type="text"] {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #1f2328;
+            background: #ffffff;
+            color: #fff;
+            border-radius: 10px;
+            outline: none;
+        }
+    
+        .controls select {
+            padding: 10px 12px;
+            border: 1px solid #1f2328;
+            background: #0f1216;
+            color: #fff;
+            border-radius: 10px;
+        }
+    
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: var(--gap);
+            padding: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    
+        @media (max-width: 980px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        .item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0f1216;
+            border: 1px solid #1b1f24;
+            cursor: pointer;
+        }
+    
+        .thumb {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            display: block;
+            background: #0f1216;
+        }
+    
+        .badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, .5);
+            border: 1px solid rgba(255, 255, 255, .15);
+        }
+    
+        .label {
+            position: absolute;
+            inset: auto 0 0 0;
+            padding: 10px 12px;
+            font-size: 12px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .72) 60%, rgba(0, 0, 0, .9) 100%);
+        }
+    
+        /* Modal / Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+    
+        .lightbox.show {
+            display: flex;
+        }
+    
+    
+        .lightbox.open {
+            display: flex;
+        }
+    
+        .frame {
+            position: relative;
+            width: min(96vw, 1200px);
+            height: min(88vh, 900px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .frame img,
+        .frame iframe,
+        .frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            border-radius: 12px;
+        }
+    
+        .chrome {
+            position: fixed;
+            inset: 0 0 auto 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            gap: 10px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .55), transparent);
+        }
+    
+        .chrome .title {
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70vw;
+        }
+    
+        .chrome .btns {
+            display: flex;
+            gap: 8px;
+        }
+    
+        .btn {
+            appearance: none;
+            border: 1px solid #2a2f36;
+            background: #0f1216;
+            color: #e8eaed;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+        }
+    
+        .btn:hover {
+            background: #12161c;
+        }
+    </style>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation - Desktop Only -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>Karang Taruna</h3>
@@ -40,15 +227,9 @@
         </nav>
     </div>
 
-    <!-- Overlay for mobile -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <!-- Main Content -->
     <div class="main-content">
         <header class="content-header">
-            <button class="sidebar-toggle-btn" id="sidebarToggleBtn">
-                <i class="fas fa-bars"></i>
-            </button>
             <div class="logo-section">
                 <img src="/logo/Logo 2.jpg" alt="Logo Karang Taruna" class="kt-logo">
                 <div>
@@ -57,6 +238,33 @@
                 </div>
             </div>
         </header>
+
+        <!-- Mobile Navigation - Hamburger di bawah header -->
+        <nav class="mobile-nav" id="mobileNav">
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#informasi" class="nav-item" data-section="informasi">
+                    <i class="fas fa-info-circle"></i> Informasi
+                </a>
+                <a href="#struktur" class="nav-item" data-section="struktur">
+                    <i class="fas fa-sitemap"></i> Struktur Organisasi
+                </a>
+                <a href="#galeri" class="nav-item" data-section="galeri">
+                    <i class="fas fa-images"></i> Galeri
+                </a>
+                <a href="#todo" class="nav-item" data-section="todo">
+                    <i class="fas fa-tasks"></i> To Do List
+                </a>
+                <a href="#kalender" class="nav-item" data-section="kalender">
+                    <i class="fas fa-calendar-alt"></i> Kalender
+                </a>
+                <a href="#kontak" class="nav-item" data-section="kontak">
+                    <i class="fas fa-phone-alt"></i> Kontak
+                </a>
+            </div>
+        </nav>
 
         <main class="content-body">
             <!-- Informasi Section -->
@@ -85,25 +293,70 @@
                 <div class="card">
                     <h3>Pengurus Karang Taruna ERTEGA</h3>
                     <div class="struktur-grid">
-                        <div class="struktur-item">
-                            <h4>Ketua</h4>
-                            <p>[Nama Ketua]</p>
+                    <div class="struktur-item">
+                        <img src="/logo/bintang.jpg" alt="Ketua" class="profile-pic">
+                        <h4>Ketua</h4>
+                        <p>Bintang Cahya Putra</p>
+                        <div class="contact-info">
+                            <a href="https://wa.me/6282137761283" class="contact-link whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> 0821-3776-1283
+                            </a>
+                            <a href="https://instagram.com/bintangputraa" class="contact-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i> @bintangputraa
+                            </a>
                         </div>
-                        <div class="struktur-item">
-                            <h4>Wakil Ketua</h4>
-                            <p>[Nama Wakil Ketua]</p>
-                        </div>
-                        <div class="struktur-item">
-                            <h4>Sekretaris</h4>
-                            <p>[Nama Sekretaris]</p>
-                        </div>
-                        <div class="struktur-item">
-                        <h4>Bendahara</h4>
-                        <p>[Nama Bendahara]</p>
                     </div>
                     <div class="struktur-item">
+                        <img src="/logo/blank-profile-picture.png" alt="Wakil Ketua" class="profile-pic">
+                        <h4>Wakil Ketua</h4>
+                        <p>[Nama Wakil Ketua]</p>
+                        <div class="contact-info">
+                            <a href="https://wa.me/6281234567891" class="contact-link whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> 0812-3456-7891
+                            </a>
+                            <a href="https://instagram.com/wakil_ertega" class="contact-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i> @wakil_ertega
+                            </a>
+                        </div>
+                    </div>
+                    <div class="struktur-item">
+                        <img src="/logo/blank-profile-picture.png" alt="Sekretaris" class="profile-pic">
+                        <h4>Sekretaris</h4>
+                        <p>[Nama Sekretaris]</p>
+                        <div class="contact-info">
+                            <a href="https://wa.me/6281234567892" class="contact-link whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> 0812-3456-7892
+                            </a>
+                            <a href="https://instagram.com/sekretaris_ertega" class="contact-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i> @sekretaris_ertega
+                            </a>
+                        </div>
+                    </div>
+                    <div class="struktur-item">
+                        <img src="/logo/blank-profile-picture.png" alt="Bendahara" class="profile-pic">
+                        <h4>Bendahara</h4>
+                        <p>[Nama Bendahara]</p>
+                        <div class="contact-info">
+                            <a href="https://wa.me/6281234567893" class="contact-link whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> 0812-3456-7893
+                            </a>
+                            <a href="https://instagram.com/bendahara_ertega" class="contact-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i> @bendahara_ertega
+                            </a>
+                        </div>
+                    </div>
+                    <div class="struktur-item">
+                        <img src="/logo/blank-profile-picture.png" alt="Koordinator Bidang" class="profile-pic">
                         <h4>Koordinator Bidang</h4>
                         <p>[Nama Koordinator]</p>
+                        <div class="contact-info">
+                            <a href="https://wa.me/6281234567894" class="contact-link whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp"></i> 0812-3456-7894
+                            </a>
+                            <a href="https://instagram.com/koordinator_ertega" class="contact-link instagram" target="_blank">
+                                <i class="fab fa-instagram"></i> @koordinator_ertega
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -112,20 +365,180 @@
         <!-- Galeri Section -->
         <section id="galeri-section" class="content-section">
             <h2><i class="fas fa-images"></i> Galeri Kegiatan</h2>
-            <div class="galeri-grid">
-                <div class="galeri-item">
-                    <img src="https://via.placeholder.com/300x200/007bff/ffffff?text=Kegiatan+1" alt="Kegiatan 1">
-                    <p>Kerja Bakti Massal</p>
+            <div class="galeri-container">
+                <div class="galeri-grid" >
+                    <!-- Lomba 17an 2025 -->
+                    <div class="galeri-item" style="cursor: pointer;" onclick="showLomba17anSection()">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1iu986urRnEPGsOe4bd3Suhenseq5kcRV&sz=w1000" alt="Lomba 17an 2025" loading="lazy">
+                        </div>
+                        <div class="galeri-info" >
+                            <h4>Lomba 17an 2025</h4>
+                            <p>Perayaan Hari Kemerdekaan RI dengan berbagai lomba tradisional dan modern</p>
+                            <span class="galeri-date">17 Agustus 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Kerja Bakti Massal -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Kerja Bakti Massal" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Kerja Bakti Massal</h4>
+                            <p>Bersih-bersih lingkungan sekitar RT 03 RW 13 secara gotong royong</p>
+                            <span class="galeri-date">12 Juli 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Pelatihan Keterampilan -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Pelatihan Keterampilan" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Pelatihan Keterampilan</h4>
+                            <p>Pelatihan membuat kerajinan tangan dari bahan daur ulang</p>
+                            <span class="galeri-date">5 Juni 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Sosialisasi Lingkungan -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Sosialisasi Lingkungan" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Sosialisasi Lingkungan</h4>
+                            <p>Penanaman pohon dan edukasi tentang pentingnya menjaga lingkungan</p>
+                            <span class="galeri-date">22 Mei 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Bakti Sosial -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Bakti Sosial" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Bakti Sosial</h4>
+                            <p>Pembagian sembako kepada warga kurang mampu di sekitar Desa Cemani</p>
+                            <span class="galeri-date">10 April 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Pelatihan Digital -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Pelatihan Digital" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Pelatihan Digital Marketing</h4>
+                            <p>Pelatihan penggunaan media sosial untuk usaha bagi pemuda desa</p>
+                            <span class="galeri-date">28 Maret 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Donor Darah -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Donor Darah" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Donor Darah Massal</h4>
+                            <p>Kegiatan donor darah yang dilakukan secara berkala setiap 3 bulan</p>
+                            <span class="galeri-date">15 Februari 2025</span>
+                        </div>
+                    </div>
+
+                    <!-- Peringatan Hari Ibu -->
+                    <div class="galeri-item">
+                        <div class="galeri-media">
+                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Peringatan Hari Ibu" loading="lazy">
+                        </div>
+                        <div class="galeri-info">
+                            <h4>Peringatan Hari Ibu</h4>
+                            <p>Perayaan Hari Ibu dengan berbagai kegiatan untuk para ibu di lingkungan RT 03</p>
+                            <span class="galeri-date">22 Desember 2024</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="galeri-item">
-                    <img src="https://via.placeholder.com/300x200/28a745/ffffff?text=Kegiatan+2" alt="Kegiatan 2">
-                    <p>Pelatihan Keterampilan</p>
-                </div>
-                <div class="galeri-item">
-                    <img src="https://via.placeholder.com/300x200/dc3545/ffffff?text=Kegiatan+3" alt="Kegiatan 3">
-                    <p>Sosialisasi Lingkungan</p>
+                
+                <div class="galeri-note">
+                    <p><i class="fas fa-info-circle"></i> Klik pada gambar untuk melihat dalam ukuran penuh. Semua foto dan video dokumentasi kegiatan tersedia di 
+                    <a href="https://drive.google.com/drive/folders/1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul?usp=sharing" target="_blank" class="drive-link">
+                        Google Drive Karang Taruna
+                    </a>
+                    </p>
                 </div>
             </div>
+        </section>
+
+        <!-- Lomba 17an 2025 Section -->
+        <section id="lomba-17an-2025-section" class="content-section">
+            <h2><i class="fas fa-flag"></i> Lomba 17an 2025</h2>
+            <div class="wrap">
+                <h1>Galeri Foto & Video – Google Drive</h1>
+                <div class="hint">Pastikan folder Drive dibagikan: <b>Anyone with the link (Viewer)</b>. Isi
+                    <code>API_KEY</code> Anda di dalam file ini.
+                </div>
+                <div class="controls">
+                    <input id="search" type="text" placeholder="Cari nama file… (Enter untuk cari)" />
+                    <select id="typeFilter">
+                        <option value="all">Semua</option>
+                        <option value="image">Foto saja</option>
+                        <option value="video">Video saja</option>
+                    </select>
+                    <button class="btn" id="reloadBtn">Muat Ulang</button>
+                </div>
+            </div>
+            <main class="grid" id="grid"></main>
+            
+            <!-- Lightbox / Fullscreen viewer -->
+            <div class="lightbox" id="lightbox">
+                <div class="chrome">
+                    <div class="title" id="lbTitle"></div>
+                    <div class="btns">
+                        <button class="btn" id="fsBtn" title="Masuk/keluar Fullscreen">Fullscreen</button>
+                        <button class="btn" id="closeBtn">Tutup (Esc)</button>
+                    </div>
+                </div>
+                <div class="frame" id="lbFrame"></div>
+            </div>
+            
+            <script src="script-fixed.js" defer></script>
+
+        </section>
+
+        <!-- Drive Gallery Section (untuk integrasi) -->
+        <section id="drive-gallery-section" class="content-section">
+            <div class="wrap">
+                <h1>Galeri Foto & Video – Google Drive</h1>
+                <div class="controls">
+                    <input id="search" type="text" placeholder="Cari nama file… (Enter untuk cari)" />
+                    <select id="typeFilter">
+                        <option value="all">Semua</option>
+                        <option value="image">Foto saja</option>
+                        <option value="video">Video saja</option>
+                    </select>
+                    <button class="btn" id="reloadBtn">Muat Ulang</button>
+                </div>
+            </div>
+            <main class="grid" id="grid"></main>
+            
+            <!-- Lightbox / Fullscreen viewer -->
+            <div class="lightbox" id="lightbox">
+                <div class="chrome">
+                    <div class="title" id="lbTitle"></div>
+                    <div class="btns">
+                        <button class="btn" id="fsBtn" title="Masuk/keluar Fullscreen">Fullscreen</button>
+                        <button class="btn" id="closeBtn">Tutup (Esc)</button>
+                    </div>
+                </div>
+                <div class="frame" id="lbFrame"></div>
+            </div>
+            
+            <script src="script-fixed.js" defer></script>
         </section>
 
         <!-- To Do List Section -->
@@ -190,82 +603,99 @@
     </main>
 
     <script>
-        // Sidebar toggle functionality
+        // Navigation functionality
         const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
         const sidebarItems = document.querySelectorAll('.sidebar-item');
+        const mobileNavItems = document.querySelectorAll('.nav-item');
         const contentSections = document.querySelectorAll('.content-section');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
 
-        // Toggle sidebar
-        function toggleSidebar() {
-            sidebar.classList.toggle('active');
-            sidebarOverlay.classList.toggle('active');
-            console.log('Sidebar toggled:', sidebar.classList.contains('active'));
+
+        // Handle navigation item clicks for both desktop and mobile
+        function handleNavClick(item) {
+            const targetSection = item.getAttribute('data-section');
+            
+            // Remove active class from all items
+            [...sidebarItems, ...mobileNavItems].forEach(i => i.classList.remove('active'));
+            
+            // Add active class to clicked item
+            item.classList.add('active');
+            
+            // Hide all sections
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            // Show corresponding section
+            document.getElementById(`${targetSection}-section`).classList.add('active');
+            
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('show');
+            }
         }
 
-        // Event listeners untuk toggle
-        sidebarToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleSidebar();
-        });
-
-        sidebarToggleBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleSidebar();
-        });
-
-        sidebarOverlay.addEventListener('click', toggleSidebar);
-
-        // Handle sidebar item clicks
+        // Desktop sidebar items
         sidebarItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
-                
-                // Remove active class from all items
-                sidebarItems.forEach(i => i.classList.remove('active'));
-                
-                // Add active class to clicked item
-                item.classList.add('active');
-                
-                // Hide all sections
-                contentSections.forEach(section => section.classList.remove('active'));
-                
-                // Show corresponding section
-                const targetSection = item.getAttribute('data-section');
-                document.getElementById(`${targetSection}-section`).classList.add('active');
-                
-                // Close sidebar on mobile
-                if (window.innerWidth <= 768) {
-                    toggleSidebar();
-                }
+                handleNavClick(item);
             });
         });
 
-        // Close sidebar when clicking outside on mobile
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768 && 
-                !sidebar.contains(e.target) && 
-                !sidebarToggleBtn.contains(e.target) &&
-                !sidebarToggle.contains(e.target)) {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
-            }
+        // Mobile navigation items
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                handleNavClick(item);
+            });
         });
+
+        // Mobile toggle
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+        }
 
         // Handle window resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                sidebar.classList.remove('active');
-                sidebarOverlay.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('show');
             }
         });
 
-        // Force mobile view for testing
-        if (window.innerWidth <= 768) {
-            console.log('Mobile view detected');
+        // Function to show Lomba 17an 2025 section
+        function showLomba17anSection() {
+            // Hide all sections
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            // Show lomba-17an-2025 section
+            document.getElementById('lomba-17an-2025-section').classList.add('active');
+            
+            // Update active navigation items
+            [...sidebarItems, ...mobileNavItems].forEach(i => i.classList.remove('active'));
         }
+
+        // Initialize gallery click handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click event to Lomba 17an 2025 gallery item
+            const lombaItem = document.querySelector('.galeri-item');
+            if (lombaItem) {
+                lombaItem.style.cursor = 'pointer';
+                
+                // Add hover effects
+                lombaItem.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                lombaItem.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+                });
+            }
+        });
     </script>
 </body>
 </html>
