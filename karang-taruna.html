@@ -8,56 +8,13 @@
         integrity="sha384-NlsxdkweGA8nr9s0TVc3Qu2zqhWMNsHrvzMpAjVR0yDqXgC2z+RWYoeCNG2uO2MC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Keep only essential styles, move others to style.css -->
     <style>
+        /* Only keep specific styles for gallery/lightbox functionality */
         :root {
             --gap: 14px;
         }
-    
-        * {
-            box-sizing: border-box;
-        }
-    
-    
-    
-        h1 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: 700;
-        }
-    
-        .hint {
-            font-size: 12px;
-            opacity: .75;
-            margin-top: 4px;
-        }
-    
-        /* Controls */
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-top: 10px;
-        }
-    
-        .controls input[type="text"] {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1px solid #1f2328;
-            background: #ffffff;
-            color: #fff;
-            border-radius: 10px;
-            outline: none;
-        }
-    
-        .controls select {
-            padding: 10px 12px;
-            border: 1px solid #1f2328;
-            background: #0f1216;
-            color: #fff;
-            border-radius: 10px;
-        }
-    
-        /* Grid */
+        
         .grid {
             display: grid;
             gap: var(--gap);
@@ -66,19 +23,29 @@
             margin: 0 auto;
             grid-template-columns: repeat(3, 1fr);
         }
-    
+        
         @media (max-width: 980px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-    
+        
         @media (max-width: 640px) {
             .grid {
                 grid-template-columns: 1fr;
             }
+            .btn {    
+                padding: 10px 12px;
+                border: 1px solid #1f2328;
+                border-radius: 10px;
+                background: #fdfdfd;
+                color: #000000;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 8px;
+            }
         }
-    
+        
         .item {
             position: relative;
             border-radius: 14px;
@@ -87,7 +54,7 @@
             border: 1px solid #1b1f24;
             cursor: pointer;
         }
-    
+        
         .thumb {
             width: 100%;
             aspect-ratio: 4/3;
@@ -95,65 +62,7 @@
             display: block;
             background: #0f1216;
         }
-    
-        .badge {
-            position: absolute;
-            top: 8px;
-            left: 8px;
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: 999px;
-            background: rgba(0, 0, 0, .5);
-            border: 1px solid rgba(255, 255, 255, .15);
-        }
-    
-        .label {
-            position: absolute;
-            inset: auto 0 0 0;
-            padding: 10px 12px;
-            font-size: 12px;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .72) 60%, rgba(0, 0, 0, .9) 100%);
-        }
-    
-        /* Modal / Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-    
-        .lightbox.show {
-            display: flex;
-        }
-    
-    
-        .lightbox.open {
-            display: flex;
-        }
-    
-        .frame {
-            position: relative;
-            width: min(96vw, 1200px);
-            height: min(88vh, 900px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        .frame img,
-        .frame iframe,
-        .frame video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #000;
-            border-radius: 12px;
-        }
-    
+        
         .chrome {
             position: fixed;
             inset: 0 0 auto 0;
@@ -164,7 +73,7 @@
             gap: 10px;
             background: linear-gradient(180deg, rgba(0, 0, 0, .55), transparent);
         }
-    
+        
         .chrome .title {
             font-weight: 600;
             font-size: 14px;
@@ -173,26 +82,14 @@
             text-overflow: ellipsis;
             max-width: 70vw;
         }
-    
-        .chrome .btns {
-            display: flex;
-            gap: 8px;
-        }
-    
-        .btn {
-            appearance: none;
-            border: 1px solid #2a2f36;
-            background: #0f1216;
-            color: #e8eaed;
-            padding: 8px 12px;
+        
+        .btn {    
+            padding: 10px 12px;
+            border: 1px solid #1f2328;
             border-radius: 10px;
+            background: #fdfdfd;
+            color: #000000;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
-        }
-    
-        .btn:hover {
-            background: #12161c;
         }
     </style>
 </head>
@@ -368,26 +265,26 @@
             <div class="galeri-container">
                 <div class="galeri-grid" >
                     <!-- Lomba 17an 2025 -->
-                    <div class="galeri-item" style="cursor: pointer;" onclick="showLomba17anSection()">
+                    <div class="galeri-item" style="cursor: pointer;" onclick="showLomba17anSection()" id="1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul" name="1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul">
                         <div class="galeri-media">
                             <img src="https://drive.google.com/thumbnail?id=1iu986urRnEPGsOe4bd3Suhenseq5kcRV&sz=w1000" alt="Lomba 17an 2025" loading="lazy">
                         </div>
                         <div class="galeri-info" >
                             <h4>Lomba 17an 2025</h4>
                             <p>Perayaan Hari Kemerdekaan RI dengan berbagai lomba tradisional dan modern</p>
-                            <span class="galeri-date">17 Agustus 2025</span>
+                            <span class="galeri-date">5-13 Agustus 2025</span>
                         </div>
                     </div>
 
-                    <!-- Kerja Bakti Massal -->
-                    <div class="galeri-item">
+                    <!-- Tirakatan 2025 -->
+                    <div class="galeri-item" style="cursor: pointer;" onclick="showTirakatanSection()" id="15AQiorluoSWeNv63AzeoPFuV7kI2guJ3">
                         <div class="galeri-media">
-                            <img src="https://drive.google.com/thumbnail?id=1oo6U_k-qJGQwvT6N2FcODwS5oQy3_8Ul&sz=w1000" alt="Kerja Bakti Massal" loading="lazy">
+                            <img src="https://drive.google.com/thumbnail?id=1NULsLhW-u6ojmwJyDQ9bRgbTy4fVW0rm&sz=w1000" alt="Tirakatan 2025" loading="lazy">
                         </div>
                         <div class="galeri-info">
-                            <h4>Kerja Bakti Massal</h4>
-                            <p>Bersih-bersih lingkungan sekitar RT 03 RW 13 secara gotong royong</p>
-                            <span class="galeri-date">12 Juli 2025</span>
+                            <h4>Malam Tirakatan 2025</h4>
+                            <p>Malam Tirakatan memperingati Hari Kemerdekaan Indonesia yang ke-80</p>
+                            <span class="galeri-date">17 Agustus 2025</span>
                         </div>
                     </div>
 
@@ -478,9 +375,8 @@
         <section id="lomba-17an-2025-section" class="content-section">
             <h2><i class="fas fa-flag"></i> Lomba 17an 2025</h2>
             <div class="wrap">
-                <h1>Galeri Foto & Video – Google Drive</h1>
                 <div class="controls">
-                    <input id="search" type="text" placeholder="Cari nama file… (Enter untuk cari)" />
+                    <input id="search" type="text" placeholder="Cari nama file…" />
                     <select id="typeFilter">
                         <option value="all">Semua</option>
                         <option value="image">Foto saja</option>
@@ -492,7 +388,7 @@
             <main class="grid" id="grid"></main>
             
             <!-- Lightbox / Fullscreen viewer -->
-            <div class="lightbox" id="lightbox">
+            <div class="lightbox" id="lightbox" style="display: none;">
                 <div class="chrome">
                     <div class="title" id="lbTitle"></div>
                     <div class="btns">
@@ -502,41 +398,43 @@
                 </div>
                 <div class="frame" id="lbFrame"></div>
             </div>
-            
-            <script src="script-fixed.js" defer></script>
+            <script src="script-lomba.js"  defer></script>
 
         </section>
 
-        <!-- Drive Gallery Section (untuk integrasi) -->
-        <section id="drive-gallery-section" class="content-section">
+        <!-- Tirakatan 2025 Section -->
+        <section id="tirakatan-section" class="content-section">
+            <h2><i class="fas fa-flag"></i> Malan Tirakatan 2025</h2>
             <div class="wrap">
                 <h1>Galeri Foto & Video – Google Drive</h1>
                 <div class="controls">
-                    <input id="search" type="text" placeholder="Cari nama file… (Enter untuk cari)" />
-                    <select id="typeFilter">
+                    <input id="search-tirakatan" type="text" placeholder="Cari nama file…" />
+                    <select id="typeFilter-tirakatan">
                         <option value="all">Semua</option>
                         <option value="image">Foto saja</option>
                         <option value="video">Video saja</option>
                     </select>
-                    <button class="btn" id="reloadBtn">Muat Ulang</button>
+                    <button class="btn" id="reloadBtn-tirakatan">Muat Ulang</button>
                 </div>
             </div>
-            <main class="grid" id="grid"></main>
-            
+            <main class="grid" id="grid-tirakatan"></main>
+        
             <!-- Lightbox / Fullscreen viewer -->
-            <div class="lightbox" id="lightbox">
+            <div class="lightbox" id="lightbox-tirakatan" style="display: none;">
                 <div class="chrome">
-                    <div class="title" id="lbTitle"></div>
+                    <div class="title" id="lbTitle-tirakatan"></div>
                     <div class="btns">
-                        <button class="btn" id="fsBtn" title="Masuk/keluar Fullscreen">Fullscreen</button>
-                        <button class="btn" id="closeBtn">Tutup (Esc)</button>
+                        <button class="btn" id="fsBtn-tirakatan" title="Masuk/keluar Fullscreen">Fullscreen</button>
+                        <button class="btn" id="closeBtn-tirakatan">Tutup (Esc)</button>
                     </div>
                 </div>
-                <div class="frame" id="lbFrame"></div>
+                <div class="frame" id="lbFrame-tirakatan"></div>
             </div>
-            
-            <script src="script-fixed.js" defer></script>
+            <script src="" defer></script>
+        
         </section>
+
+    
 
         <!-- To Do List Section -->
         <section id="todo-section" class="content-section">
@@ -673,6 +571,17 @@
             [...sidebarItems, ...mobileNavItems].forEach(i => i.classList.remove('active'));
         }
 
+        function showTirakatanSection() {
+                // Hide all sections
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // Show lomba-17an-2025 section
+                document.getElementById('tirakatan-section').classList.add('active');
+
+                // Update active navigation items
+                [...sidebarItems, ...mobileNavItems].forEach(i => i.classList.remove('active'));
+            }
+
         // Initialize gallery click handlers
         document.addEventListener('DOMContentLoaded', function() {
             // Add click event to Lomba 17an 2025 gallery item
@@ -696,4 +605,3 @@
     </script>
 </body>
 </html>
-

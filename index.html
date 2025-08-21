@@ -7,8 +7,160 @@
     <title>Dashboard Cemani RT 03 RW 13</title>
     <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@5.4.1/dist/css/coreui.min.css" rel="stylesheet"
         integrity="sha384-NlsxdkweGA8nr9s0TVc3Qu2zqhWMNsHrvzMpAjVR0yDqXgC2z+RWYoeCNG2uO2MC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #ffc107;
+            --text-color: #333;
+            --background-light: #f8f9fa;
+            --background-dark: #ffffff;
+            --mobile-breakpoint: 768px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            height: 50px;
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Navbar */
+        .nav {
+            background: #004d40;
+            display: block;
+            text-align: center;
+            padding: 0;
+            align-items: center;
+            align-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mobile Nav */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background: #004d40;
+                width: 100%;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+                margin-left: auto;
+            }
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Agenda List */
+        .agenda-list {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .agenda-list li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 12px 18px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #004d40;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,37 +168,35 @@
     <header class="header">
         <div class="container">
             <!-- Logo kiri -->
-            <img src="/logo/Logo 2.jpg" alt="Logo Kiri"
-                class="header-logo">
+            <img src="/logo/Logo 2.jpg" alt="Logo Kiri" class="header-logo">
 
             <!-- Judul -->
             <h1 class="header-title">Desa Cemani RT 03 RW 13</h1>
 
             <!-- Logo kanan -->
-            <img src="/logo/skh.jpg" alt="Logo Kanan"
-                class="header-logo">
+            <img src="/logo/skh.jpg" alt="Logo Kanan" class="header-logo">
         </div>
-        <nav class="nav">
-            <button class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-menu" id="navMenu">
-                <a href="#beranda" class="nav-item">Beranda</a>
-                <a href="#informasi" class="nav-item">Informasi</a>
-                <a href="#agenda" class="nav-item">Agenda</a>
-                <a href="/karang-taruna.html" class="nav-item">Karang Taruna</a>
-                <a href="#kontak" class="nav-item">Kontak</a>
-            </div>
-        </nav>
-
     </header>
+
+    <nav class="nav">
+        <button class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-menu" id="navMenu">
+            <a href="#beranda" class="nav-item">Beranda</a>
+            <a href="#informasi" class="nav-item">Informasi</a>
+            <a href="#agenda" class="nav-item">Agenda</a>
+            <a href="/karang-taruna.html" class="nav-item">Karang Taruna</a>
+            <a href="#kontak" class="nav-item">Kontak</a>
+        </div>
+    </nav>
 
     <main class="main">
         <section id="beranda" class="section hero">
             <div id="carouselExampleCaptions" class="carousel slide" data-coreui-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-coreui-target="#carouselExampleCaptions" data-coreui-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-coreui-target="#carouselExampleCaptions" data-coreui-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-coreui-target="#carouselExampleCaptions" data-coreui-slide-to="1"
                         aria-label="Slide 2"></button>
                     <button type="button" data-coreui-target="#carouselExampleCaptions" data-coreui-slide-to="2"
@@ -54,21 +204,24 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://via.placeholder.com/1200x400/007bff/ffffff?text=Selamat+Datang+Warga+RT+03" class="d-block w-100" alt="Selamat Datang Warga">
+                        <img src="https://via.placeholder.com/1200x400/007bff/ffffff?text=Selamat+Datang+Warga+RT+03"
+                            class="d-block w-100" alt="Selamat Datang Warga">
                         <div class="carousel-caption d-none d-md-block">
                             <h2>Selamat Datang Warga!</h2>
                             <p>Dashboard informasi dan kegiatan untuk seluruh warga RT 03 RW 13 Desa Cemani.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://via.placeholder.com/1200x400/28a745/ffffff?text=Informasi+Kegiatan+RT" class="d-block w-100" alt="Informasi Kegiatan">
+                        <img src="https://via.placeholder.com/1200x400/28a745/ffffff?text=Informasi+Kegiatan+RT"
+                            class="d-block w-100" alt="Informasi Kegiatan">
                         <div class="carousel-caption d-none d-md-block">
                             <h2>Informasi Terkini</h2>
                             <p>Dapatkan update terbaru mengenai kegiatan dan program warga RT 03 RW 13.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://via.placeholder.com/1200x400/dc3545/ffffff?text=Kontak+Darurat+RT" class="d-block w-100" alt="Kontak Darurat">
+                        <img src="https://via.placeholder.com/1200x400/dc3545/ffffff?text=Kontak+Darurat+RT"
+                            class="d-block w-100" alt="Kontak Darurat">
                         <div class="carousel-caption d-none d-md-block">
                             <h2>Kontak Penting</h2>
                             <p>Simpan nomor penting untuk kebutuhan darurat dan informasi warga.</p>
@@ -86,7 +239,6 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        
         </section>
 
         <section id="informasi" class="section">
@@ -155,48 +307,22 @@
         </div>
     </footer>
 
-
     <script>
         const navToggle = document.getElementById("navToggle");
         const navMenu = document.getElementById("navMenu");
-        const main = document.querySelector(".main");
 
         navToggle.addEventListener("click", () => {
             navMenu.classList.toggle("show");
-            if (navMenu.classList.contains("show")) {
-                // Calculate the height of the dropdown menu
-                const navHeight = navMenu.offsetHeight;
-                main.style.marginTop = navHeight + "px";
-            } else {
-                main.style.marginTop = "0";
-            }
         });
 
         // Carousel auto-slide functionality
         const carousel = document.getElementById('carouselExampleCaptions');
-        
-        // Initialize CoreUI carousel with auto-slide
         const carouselInstance = new coreui.Carousel(carousel, {
             interval: 5000,
             wrap: true,
             ride: true
         });
-
-        // Fallback auto-slide functionality
-        let currentSlide = 0;
-        const slides = carousel.querySelectorAll('.carousel-item');
-        const indicators = carousel.querySelectorAll('.carousel-indicators button');
-        const totalSlides = slides.length;
-
-        function autoSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            carouselInstance.to(currentSlide);
-        }
-
-        // Start auto-slide every 5 seconds
-        setInterval(autoSlide, 5000);
     </script>
-
 
 </body>
 
