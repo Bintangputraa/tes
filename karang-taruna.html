@@ -371,116 +371,120 @@
             </div>
         </section>
 
-        <!-- Lomba 17an 2025 Section -->
-        <section id="lomba-17an-2025-section" class="content-section">
-            <h2><i class="fas fa-flag"></i> Lomba 17an 2025</h2>
+        <!-- ================= GALERI LOMBA ================= -->
+        <section id="lomba-section" class="content-section">
+            <h2><i class="fas fa-trophy"></i> Lomba 17 Agustus 2025</h2>
             <div class="wrap">
                 <div class="controls">
-                    <input id="search" type="text" placeholder="Cari nama file…" />
-                    <select id="typeFilter">
+                    <input id="search-lomba" type="text" placeholder="Cari nama file…">
+                    <select id="typeFilter-lomba">
                         <option value="all">Semua</option>
                         <option value="image">Foto saja</option>
                         <option value="video">Video saja</option>
                     </select>
-                    <button class="btn" id="reloadBtn">Muat Ulang</button>
+                    <button id="reloadBtn-lomba">Muat Ulang</button>
                 </div>
             </div>
-            <main class="grid" id="grid"></main>
-            
-            <!-- Lightbox / Fullscreen viewer -->
-            <div class="lightbox" id="lightbox" style="display: none;">
+            <main class="grid" id="grid-lomba"></main>
+        
+            <div class="lightbox" id="lightbox-lomba">
                 <div class="chrome">
-                    <div class="title" id="lbTitle"></div>
+                    <div class="title" id="lbTitle-lomba"></div>
                     <div class="btns">
-                        <button class="btn" id="fsBtn" title="Masuk/keluar Fullscreen">Fullscreen</button>
-                        <button class="btn" id="closeBtn">Tutup (Esc)</button>
+                        <button id="fsBtn-lomba">Fullscreen</button>
+                        <button id="closeBtn-lomba">Tutup</button>
                     </div>
                 </div>
-                <div class="frame" id="lbFrame"></div>
+                <div class="frame" id="lbFrame-lomba"></div>
             </div>
-            <script src="script-lomba.js"  defer></script>
-
         </section>
-
-        <!-- Tirakatan 2025 Section -->
+        
+        <!-- ================= GALERI TIRAKATAN ================= -->
         <section id="tirakatan-section" class="content-section">
-            <h2><i class="fas fa-flag"></i> Malan Tirakatan 2025</h2>
+            <h2><i class="fas fa-moon"></i> Malam Tirakatan 2025</h2>
             <div class="wrap">
-                <h1>Galeri Foto & Video – Google Drive</h1>
                 <div class="controls">
-                    <input id="search-tirakatan" type="text" placeholder="Cari nama file…" />
+                    <input id="search-tirakatan" type="text" placeholder="Cari nama file…">
                     <select id="typeFilter-tirakatan">
                         <option value="all">Semua</option>
                         <option value="image">Foto saja</option>
                         <option value="video">Video saja</option>
                     </select>
-                    <button class="btn" id="reloadBtn-tirakatan">Muat Ulang</button>
+                    <button id="reloadBtn-tirakatan">Muat Ulang</button>
                 </div>
             </div>
             <main class="grid" id="grid-tirakatan"></main>
         
-            <!-- Lightbox / Fullscreen viewer -->
-            <div class="lightbox" id="lightbox-tirakatan" style="display: none;">
+            <div class="lightbox" id="lightbox-tirakatan">
                 <div class="chrome">
                     <div class="title" id="lbTitle-tirakatan"></div>
                     <div class="btns">
-                        <button class="btn" id="fsBtn-tirakatan" title="Masuk/keluar Fullscreen">Fullscreen</button>
-                        <button class="btn" id="closeBtn-tirakatan">Tutup (Esc)</button>
+                        <button id="fsBtn-tirakatan">Fullscreen</button>
+                        <button id="closeBtn-tirakatan">Tutup</button>
                     </div>
                 </div>
                 <div class="frame" id="lbFrame-tirakatan"></div>
             </div>
-            <script src="" defer></script>
-        
         </section>
+
 
     
 
         <!-- To Do List Section -->
         <section id="todo-section" class="content-section">
-            <h2><i class="fas fa-tasks"></i> To Do List</h2>
-            <div class="card">
-                <h3>Program Kerja 2025</h3>
-                <ul class="todo-list">
-                    <li>
-                        <input type="checkbox" id="todo1">
-                        <label for="todo1">Pelatihan kewirausahaan untuk pemuda</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="todo2">
-                        <label for="todo2">Program donor darah rutin</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="todo3">
-                        <label for="todo3">Pembangunan taman bacaan</label>
-                    </li>
-                    <li>
-                        <input type="checkbox" id="todo4">
-                        <label for="todo4">Pelatihan digital marketing</label>
-                    </li>
-                </ul>
+            <h2><i class="fas fa-list-check"></i> To Do List Karang Taruna</h2>
+        
+            <div class="todo-container">
+                <div class="todo-input">
+                    <input type="text" id="newTodo" placeholder="Tambahkan kegiatan baru...">
+                    <button id="addTodo">Tambah</button>
+                </div>
+                <ul id="todoList"></ul>
             </div>
         </section>
 
         <!-- Kalender Section -->
+        <!-- Kalender Section -->
         <section id="kalender-section" class="content-section">
-            <h2><i class="fas fa-calendar-alt"></i> Kalender Kegiatan</h2>
-            <div class="card">
-                <h3>Jadwal Kegiatan 2025</h3>
-                <div class="kalender-item">
-                    <strong>15 Januari 2025:</strong> Rapat Perencanaan Tahunan
+            <h2><i class="fas fa-calendar-alt"></i> Kalender & Jadwal Kegiatan 2025</h2>
+        
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth">&lt;</button>
+                    <h3 id="monthYear"></h3>
+                    <button id="nextMonth">&gt;</button>
                 </div>
-                <div class="kalender-item">
-                    <strong>20 Februari 2025:</strong> Pelatihan Kewirausahaan
-                </div>
-                <div class="kalender-item">
-                    <strong>10 Maret 2025:</strong> Donor Darah Massal
-                </div>
-                <div class="kalender-item">
-                    <strong>25 April 2025:</strong> Kerja Bakti Lingkungan
-                </div>
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <th>Min</th>
+                            <th>Sen</th>
+                            <th>Sel</th>
+                            <th>Rab</th>
+                            <th>Kam</th>
+                            <th>Jum</th>
+                            <th>Sab</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendarBody"></tbody>
+                </table>
+            </div>
+        
+            <!-- Form tambah event -->
+            <div class="event-form" style="margin-top:15px;">
+                <h4>Tambah Catatan Kegiatan</h4>
+                <input type="date" id="eventDate">
+                <input type="text" id="eventText" placeholder="Tulis catatan kegiatan...">
+                <button id="addEvent">Tambah</button>
+            </div>
+        
+            <!-- List kegiatan -->
+            <div class="event-list" style="margin-top:20px;">
+                <h4>Jadwal Kegiatan</h4>
+                <ul id="eventList"></ul>
             </div>
         </section>
+
 
         <!-- Kontak Section -->
         <section id="kontak-section" class="content-section">
@@ -565,7 +569,7 @@
             contentSections.forEach(section => section.classList.remove('active'));
             
             // Show lomba-17an-2025 section
-            document.getElementById('lomba-17an-2025-section').classList.add('active');
+            document.getElementById('lomba-section').classList.add('active');
             
             // Update active navigation items
             [...sidebarItems, ...mobileNavItems].forEach(i => i.classList.remove('active'));
@@ -603,5 +607,9 @@
             }
         });
     </script>
+
+    <script src="script-galeri-fix.js" defer></script>
+    <script src="script-todo.js" defer></script>
+    <script src="script-kalender.js" defer></script>
 </body>
 </html>
